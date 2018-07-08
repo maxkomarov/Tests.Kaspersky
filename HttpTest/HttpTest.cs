@@ -58,18 +58,6 @@ namespace HttpTest
             if (userState.ResponseStatusCode != HttpStatusCode.OK)
                 throw new Exception($"В ответ на OPTIONS {uri.AbsoluteUri} сервер вернул {userState.ResponseStatusCode}:{userState.ResponseStatus}");
 
-            //В ответ получаем
-            //HTTP / 1.1 200 OK
-            //Cache - Control: private
-            // Server: nginx
-            //X-UIS-TraceId: ba90dfe6-d8c3-4e70-83bf-8fe2a2e28fc0
-            //Access-Control-Allow-Methods: POST,OPTIONS
-            //Access-Control-Allow-Headers: Content-Type
-            //Access-Control-Allow-Origin: https://my.kaspersky.com
-            //Strict-Transport-Security: max-age=31536000
-            //Date: Tue, 03 Jul 2018 12:30:19 GMT
-            //Content-Length: 0
-
             //Проверяем на разрешение отправки POST
             if (userState.ResponseHeaders["Access-Control-Allow-Methods"] != null)
                 if (!userState.ResponseHeaders["Access-Control-Allow-Methods"].ToLower().Contains("post"))
